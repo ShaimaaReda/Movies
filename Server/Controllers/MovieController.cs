@@ -1,6 +1,7 @@
 ﻿using BaseLibrary.DTOs;
 using BaseLibrary.Entities;
 using Core.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -12,6 +13,7 @@ namespace MovieServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class MovieController : ControllerBase
     {
         private readonly IGenericRepository<Movie> _repository;
@@ -22,11 +24,7 @@ namespace MovieServer.Controllers
            
         }
 
-        /// <summary>
-        /// //////////////////////////////////////////
-
-
-        // POST: api/Movie
+   
         [HttpPost]
         public async Task<IActionResult> PostMovie([FromForm] MovieDto movieDto, IFormFile poster)
         {

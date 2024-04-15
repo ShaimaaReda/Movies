@@ -1,6 +1,7 @@
 ﻿using BaseLibrary.DTOs;
 using BaseLibrary.Entities;
 using Core.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using MovieServer.Hubs;
@@ -9,6 +10,7 @@ namespace MovieServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ReviewController : ControllerBase
     {
         private readonly IGenericRepository<Review> _repository;
